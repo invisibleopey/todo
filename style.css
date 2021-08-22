@@ -1,0 +1,12 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  color: rgb(20, 20, 20);
+  background-color: #c5c1c0;
+  font-family: "Source Sans Pro", sans-serif;
+}
