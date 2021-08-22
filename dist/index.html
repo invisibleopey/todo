@@ -8,21 +8,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>To-Do...</h1>
-      <p id="welcome-msg">Welcome, #Name</p>
-    </header>
-    <div class="side-bar">
-      <button id="home">All Tasks</button>
-      <button id="todays-tasks">Today</button>
-      <button id="weeks-tasks">This Week</button>
-      <h2>Projects</h2>
-      <button id="chores">Chores</button>
-      <button id="workout">Workout</button>
-      <button id="coding">Coding</button>
-      <button id="academics">Academics</button>
-      <button id="market">Market Runs</button>
-      <button id="others-projects">Others</button>
-    </div>
+    <main>
+      <header>
+        <h1>To-Do...</h1>
+        <p id="welcome-msg">Welcome, #Name</p>
+      </header>
+      <nav>
+        <button id="home">All Tasks</button>
+        <button id="today">Today</button>
+        <button id="week">This Week</button>
+        <h2>Projects</h2>
+        <button id="chores">Chores</button>
+        <button id="workout">Workout</button>
+        <button id="coding">Coding</button>
+        <button id="academics">Academics</button>
+        <button id="market">Market Runs</button>
+        <button id="addNew">+</button>
+      </nav>
+      <section>
+        <ul>
+          <div class="task">
+            <input type="checkbox" name="done" id="toggleDone" />
+            <p>Learn React</p>
+            <button id="details">Details</button>
+            <p>June 9th</p>
+            <button id="editTask">EditLogo</button>
+            <button id="deleteTask">Delete Logo</button>
+          </div>
+        </ul>
+      </section>
+    </main>
   </body>
 </html>
