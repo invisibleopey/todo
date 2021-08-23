@@ -9,4 +9,29 @@ body {
   color: rgb(20, 20, 20);
   background-color: #c5c1c0;
   font-family: "Source Sans Pro", sans-serif;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
+header {
+  background: rgba(28, 163, 118, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+h1 {
+  margin-top: 0;
+}
+@media screen and (min-width: 40em) {
+  body {
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 12em 1fr;
+  }
+  header {
+    grid-column: span 2;
+  }
+  footer {
+    grid-column: span 2;
+  }
 }
