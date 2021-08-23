@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   color: rgba(20, 20, 20, 0.7);
-  background-color: #c5c1c0;
+  background-color: rgba(197, 193, 192, 0.6);
   font-family: "Source Sans Pro", sans-serif;
   display: grid;
   grid-gap: 1em;
@@ -25,11 +25,13 @@ h1 {
   margin-top: 0;
 }
 /* Nav Styling */
+nav {
+  padding-left: 2em;
+}
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  padding-left: 1em;
 }
 li {
   cursor: pointer;
@@ -40,6 +42,33 @@ li span {
 }
 li #addNew {
   font-size: 3em;
+}
+/* Main Content Styling */
+main {
+  padding: 0 2em;
+}
+/* TODO: Remember to add border-left class for each priority levels */
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5em;
+  background: rgba(197, 193, 192, 0.7);
+  height: 2.5em;
+  border-radius: 0.2em;
+  padding: 0 1em;
+}
+.task-btns {
+  padding: 0.4em;
+  border-radius: 0.2em;
+  border: 0;
+  background: whitesmoke;
+  color: rgba(18, 87, 64, 1);
+}
+.task-btns:hover {
+  background: rgba(18, 87, 64, 1);
+  color: white;
+  cursor: pointer;
 }
 
 /* Media Quarry for grid template */
@@ -56,9 +85,9 @@ li #addNew {
   }
 }
 
-/* Media Quarry for nav styling */
+/* Media Quarry for nav styling and main content*/
 @media screen and (max-width: 40em) {
-  ul {
+  nav ul {
     display: flex;
     justify-content: space-between;
   }
