@@ -25,4 +25,13 @@ function render(obj) {
   container.append(newTask);
 }
 
+// Control Modal
+document.getElementById("addNew").addEventListener("click", function () {
+  document.querySelector(".bg-modal").style.display = "flex";
+});
+
+document.querySelector(".close").addEventListener("click", function () {
+  document.querySelector(".bg-modal").style.display = "none";
+});
+
 export default render;
