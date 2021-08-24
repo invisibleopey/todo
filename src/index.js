@@ -22,5 +22,7 @@ let task3 = new Task(
   "High",
   "False"
 );
-const homeArray = [task1, task2, task3];
+const homeArray = [];
 homeArray.map(render);
+
+export default homeArray;
