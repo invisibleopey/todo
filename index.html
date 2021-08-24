@@ -42,28 +42,12 @@
           <button class="task-btns" id="editTask">EDIT</button>
           <button class="task-btns" id="deleteTask">X</button>
         </div>
-        <div class="task">
-          <input type="checkbox" name="done" id="toggleDone" />
-          <p>Learn React</p>
-          <button class="task-btns" id="details">DETAILS</button>
-          <p>June 9th</p>
-          <button class="task-btns" id="editTask">EDIT</button>
-          <button class="task-btns" id="deleteTask">X</button>
-        </div>
-        <div class="task">
-          <input type="checkbox" name="done" id="toggleDone" />
-          <p>Learn React</p>
-          <button class="task-btns" id="details">DETAILS</button>
-          <p>June 9th</p>
-          <button class="task-btns" id="editTask">EDIT</button>
-          <button class="task-btns" id="deleteTask">X</button>
-        </div>
       </ul>
     </main>
     <div class="bg-modal">
       <div class="modal-contents">
         <div class="close">+</div>
-        <form action="#">
+        <form action="#" id="new-task-form">
           <div class="container">
             <input
               type="text"
@@ -80,7 +64,7 @@
               required
             />
             <label for="due-date"> Due Date:</label>
-            <input type="date" name="due-date" id="new-task-date" />
+            <input type="date" name="due-date" id="new-task-due-date" />
             <label for="priority">Priority:</label>
             <input type="radio" name="priority" id="new-task-low" value="low" />
             <input
@@ -95,7 +79,7 @@
               id="new-task-high"
               value="high"
             />
-            <input type="submit" value="ADD TODO" />
+            <input type="submit" value="ADD TODO" id="addTodo" />
           </div>
         </form>
       </div>
