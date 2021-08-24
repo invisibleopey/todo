@@ -89,6 +89,7 @@ main {
 @media screen and (max-width: 40em) {
   nav ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   h3 {
