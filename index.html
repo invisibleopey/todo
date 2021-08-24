@@ -60,6 +60,46 @@
         </div>
       </ul>
     </main>
+    <div class="bg-modal">
+      <div class="modal-contents">
+        <div class="close">+</div>
+        <form action="#">
+          <div class="container">
+            <input
+              type="text"
+              name="title"
+              id="new-task-title"
+              placeholder="Title: Read Pharmacology"
+              required
+            />
+            <input
+              type="text"
+              name="details"
+              id="new-task-details"
+              placeholder="Details: Heart Failure drugs"
+              required
+            />
+            <label for="due-date"> Due Date:</label>
+            <input type="date" name="due-date" id="new-task-date" />
+            <label for="priority">Priority:</label>
+            <input type="radio" name="priority" id="new-task-low" value="low" />
+            <input
+              type="radio"
+              name="priority"
+              id="new-task-medium"
+              value="medium"
+            />
+            <input
+              type="radio"
+              name="priority"
+              id="new-task-high"
+              value="high"
+            />
+            <input type="submit" value="ADD TODO" />
+          </div>
+        </form>
+      </div>
+    </div>
     <footer>
       <p>Copyright Muritala Abdullahi Opeyemi</p>
     </footer>

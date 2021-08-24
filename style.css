@@ -96,3 +96,50 @@ main {
     text-align: center;
   }
 }
+
+/* Pop-up Modal Styling */
+.bg-modal {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-contents {
+  height: 25rem;
+  width: 35rem;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  border-radius: 4px;
+}
+.modal-contents input {
+  margin: 15px auto;
+  display: block;
+  width: 80%;
+  padding: 8px;
+  border: 1px solid rgba(18, 87, 64, 1);
+  border-radius: 4px;
+}
+.modal-contents input[type="submit"] {
+  width: 35%;
+  cursor: pointer;
+  color: rgba(18, 87, 64, 1);
+}
+.modal-contents input[type="submit"]:hover {
+  background: rgba(18, 87, 64, 1);
+  color: whitesmoke;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 42px;
+  color: #333;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
