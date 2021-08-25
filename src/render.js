@@ -1,4 +1,3 @@
-import homeArray from "./index.js";
 const container = document.querySelector("#container");
 function render(obj) {
   // Create the Div and its contents
@@ -36,11 +35,3 @@ document.querySelector(".close").addEventListener("click", function () {
 });
 
 export default render;
-
-// Home button response
-const homeLink = document.querySelector("#home");
-homeLink.addEventListener("click", renderHome);
-function renderHome() {
-  document.querySelector("#container").innerHTML = "";
-  homeArray.map(render);
-}
