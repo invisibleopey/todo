@@ -22,7 +22,16 @@ let task3 = new Task(
   "High",
   "False"
 );
-const homeArray = [];
-homeArray.map(render);
-
+let homeArray = [];
+// Local Storage
+export function saveLocal() {
+  localStorage.setItem("homeArray", JSON.stringify(homeArray));
+}
+export function restoreLocal() {
+  homeArray = JSON.parse(localStorage.getItem("homeArray"));
+  if (homeArray === null) homeArray = [];
+  homeArray.map(render);
+}
+// Call this function everytime my app is revisited or reloaded
+restoreLocal();
 export default homeArray;

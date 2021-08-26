@@ -1,4 +1,5 @@
 import homeArray from "./index.js";
+import { saveLocal } from "./index.js";
 import render from "./render.js";
 class Task {
   constructor(title, description, dueDate, priority, checklist) {
@@ -39,6 +40,7 @@ function addNewTask(e) {
   let checklist = undefined;
   let newTask = new Task(title, description, dueDate, priority, checklist);
   newTask.addToArrays();
+  saveLocal();
   // The next line of code was added because the contents of the homeArray kept duplicating during rendering. A temporary fix, find permanent fix later
   document.querySelector("#container").innerHTML = "";
   homeArray.map(render);
