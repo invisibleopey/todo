@@ -37,11 +37,15 @@ li {
   cursor: pointer;
   margin-bottom: 0.5em;
 }
-li span {
+span {
   color: rgba(18, 87, 64, 1);
 }
-li #addNew {
+#addNew {
+  cursor: pointer;
   font-size: 3em;
+  padding: 0.1em 0.2em;
+  border-radius: 50%;
+  background: whitesmoke;
 }
 /* Main Content Styling */
 main {
