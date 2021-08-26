@@ -33,5 +33,15 @@ document.getElementById("addNew").addEventListener("click", function () {
 document.querySelector(".close").addEventListener("click", function () {
   document.querySelector(".bg-modal").style.display = "none";
 });
-
+// Toggle between add task and add project forms
+document
+  .querySelector("#project-form-btn")
+  .addEventListener("click", function () {
+    document.querySelector("#new-task-form").style.display = "none";
+    document.querySelector("#new-project-form").style.display = "block";
+  });
+document.querySelector("#task-form-btn").addEventListener("click", function () {
+  document.querySelector("#new-project-form").style.display = "none";
+  document.querySelector("#new-task-form").style.display = "block";
+});
 export default render;

@@ -147,8 +147,8 @@ main {
   transform: rotate(45deg);
   cursor: pointer;
 }
-.task-form,
-.project-form {
+.task-form-btn,
+.project-form-btn {
   display: inline-block;
   margin-top: 0;
   margin-right: 0.5em;
@@ -157,4 +157,10 @@ main {
   background: rgba(18, 87, 64, 1);
   color: whitesmoke;
   cursor: pointer;
+}
+#new-project-form {
+  display: none;
+}
+#new-task-form {
+  display: block;
 }
