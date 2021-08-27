@@ -29,8 +29,8 @@ class Task {
 
 // TODO: Move this away from here once you find a solution to webpack messing with imported classes
 // Form Submit Button
-const addTask = document.querySelector("#addTodo");
-addTask.addEventListener("click", addNewTask);
+const addTaskBtn = document.querySelector("#addTodo");
+addTaskBtn.addEventListener("click", addNewTask);
 function addNewTask(e) {
   e.preventDefault();
   let title = document.querySelector("#new-task-title").value;
