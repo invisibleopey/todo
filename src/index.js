@@ -24,8 +24,6 @@ let task3 = new Task(
   "False"
 );
 let homeArray = [];
-const homeBtn = document.querySelector("#home");
-homeBtn.addEventListener("click", restoreLocal);
 // Local Storage
 export function saveLocal() {
   localStorage.setItem("homeArray", JSON.stringify(homeArray));

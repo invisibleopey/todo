@@ -1,3 +1,4 @@
+import { restoreLocal } from "./index.js";
 const container = document.querySelector("#container");
 function render(obj) {
   // Create the Div and its contents
@@ -54,4 +55,7 @@ export function renderProjects(obj) {
   ul.append(li);
   li.addEventListener("click", obj.renderProjectTasks);
 }
+// Event listener for home button
+const homeBtn = document.querySelector("#home");
+homeBtn.addEventListener("click", restoreLocal);
 export default render;
