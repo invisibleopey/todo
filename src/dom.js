@@ -44,4 +44,14 @@ document.querySelector("#task-form-btn").addEventListener("click", function () {
   document.querySelector("#new-project-form").style.display = "none";
   document.querySelector("#new-task-form").style.display = "block";
 });
+// Add the projects to nav
+export function renderProjects(obj) {
+  const ul = document.querySelector("#project-list");
+  let li = document.createElement("li");
+  let span = document.createElement("span");
+  span.textContent = obj.title;
+  li.append(span);
+  ul.append(li);
+  li.addEventListener("click", obj.renderProjectTasks);
+}
 export default render;
