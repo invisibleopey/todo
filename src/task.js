@@ -1,6 +1,6 @@
 import homeArray from "./index.js";
 import { saveLocal } from "./index.js";
-import render from "./render.js";
+import render from "./dom.js";
 class Task {
   constructor(title, description, dueDate, priority, checklist) {
     this.title = title;

@@ -1,5 +1,6 @@
 import Task from "./task.js";
-import render from "./render.js";
+import render from "./dom.js";
+import Projects from "./project-class.js";
 
 let task1 = new Task(
   "Get Help",
@@ -23,6 +24,8 @@ let task3 = new Task(
   "False"
 );
 let homeArray = [];
+const homeBtn = document.querySelector("#home");
+homeBtn.addEventListener("click", restoreLocal);
 // Local Storage
 export function saveLocal() {
   localStorage.setItem("homeArray", JSON.stringify(homeArray));
