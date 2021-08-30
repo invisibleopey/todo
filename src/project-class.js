@@ -31,9 +31,7 @@ function addNewProject() {
 function createProject() {
   // Used this to get value of title either I am creating a new project from
   // project form or from task form.
-  let title =
-    document.querySelector("#new-project-title").value ||
-    document.querySelector("#project-name").value;
+  let title = document.querySelector("#new-project-title").value;
   let newProject = new Projects(title);
   allProjects.push(newProject);
 }
@@ -44,8 +42,6 @@ export function sortProject(newTask) {
   for (let i = 0; i < allProjects.length; i++) {
     if (allProjects[i].title === projectName) {
       allProjects[i].myArray.push(newTask);
-    } else {
-      addNewProject();
     }
   }
 }
