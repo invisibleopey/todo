@@ -53,9 +53,13 @@ export function renderProjects(obj) {
   span.textContent = obj.title;
   li.append(span);
   ul.append(li);
-  li.addEventListener("click", obj.renderProjectTasks);
+  span.addEventListener("click", obj.renderProjectTasks.bind(obj));
 }
 // Event listener for home button
 const homeBtn = document.querySelector("#home");
-homeBtn.addEventListener("click", restoreLocal);
+homeBtn.addEventListener("click", renderHomeTasks);
+function renderHomeTasks() {
+  document.querySelector("#container").innerHTML = "";
+  restoreLocal();
+}
 export default render;
