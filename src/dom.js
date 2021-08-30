@@ -57,9 +57,8 @@ export function renderProjects(obj) {
 }
 // Event listener for home button
 const homeBtn = document.querySelector("#home");
-homeBtn.addEventListener("click", renderHomeTasks);
-function renderHomeTasks() {
+homeBtn.addEventListener("click", () => {
   document.querySelector("#container").innerHTML = "";
   restoreLocal();
-}
+});
 export default render;
