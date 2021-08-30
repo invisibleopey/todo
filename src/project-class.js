@@ -1,4 +1,3 @@
-import render from "./dom";
 import { renderProjects } from "./dom";
 
 class Projects {
@@ -6,16 +5,10 @@ class Projects {
     this.title = title;
     this.myArray = [];
   }
-  renderProjectTasks() {
-    document.querySelector("#container").innerHTML = "";
-    this.myArray.map(render);
-    // Code to render content of this.myArray
-  }
   // Add logic to remove the projects once all the tasks added are deleted
 }
 const chores = new Projects("Chores");
-const allProjects = [chores];
-allProjects.map(renderProjects);
+export let allProjects = [chores];
 
 // Use event listener to call projects class to create new array
 const addProjectBtn = document.querySelector("#addProject");
@@ -27,6 +20,7 @@ function addNewProject() {
   allProjects.map(renderProjects);
   document.querySelector(".bg-modal").style.display = "none";
   document.querySelector("#new-project-form").reset();
+  saveLocalProjects();
 }
 function createProject() {
   // Used this to get value of title either I am creating a new project from
@@ -35,7 +29,6 @@ function createProject() {
   let newProject = new Projects(title);
   allProjects.push(newProject);
 }
-// TODO: Not working, Fix it
 export function sortProject(newTask) {
   const projectName = document.querySelector("#project-name").value;
   if (projectName === "") return;
@@ -44,5 +37,17 @@ export function sortProject(newTask) {
       allProjects[i].myArray.push(newTask);
     }
   }
+  saveLocalProjects();
 }
+// Local Storage
+function saveLocalProjects() {
+  localStorage.setItem("allProjects", JSON.stringify(allProjects));
+}
+function restoreLocalProjects() {
+  allProjects = JSON.parse(localStorage.getItem("allProjects"));
+  if (allProjects === null) allProjects = [chores];
+  allProjects.map(renderProjects);
+}
+// Call this function everytime my app is revisited or reloaded
+restoreLocalProjects();
 export default Projects;
