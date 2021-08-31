@@ -7,8 +7,9 @@ class Projects {
   }
   // Add logic to remove the projects once all the tasks added are deleted
 }
+const home = new Projects("Home");
 const chores = new Projects("Chores");
-export let allProjects = [chores];
+export let allProjects = [home, chores];
 
 // Use event listener to call projects class to create new array
 const addProjectBtn = document.querySelector("#addProject");
@@ -37,15 +38,14 @@ export function sortProject(newTask) {
       allProjects[i].myArray.push(newTask);
     }
   }
-  saveLocalProjects();
 }
 // Local Storage
-function saveLocalProjects() {
+export function saveLocalProjects() {
   localStorage.setItem("allProjects", JSON.stringify(allProjects));
 }
 function restoreLocalProjects() {
   allProjects = JSON.parse(localStorage.getItem("allProjects"));
-  if (allProjects === null) allProjects = [chores];
+  if (allProjects === null) allProjects = [home, chores];
   allProjects.map(renderProjects);
 }
 // Call this function everytime my app is revisited or reloaded

@@ -1,5 +1,5 @@
-import homeArray from "./index.js";
-import { saveLocal } from "./index.js";
+import { allProjects } from "./project-class.js";
+import { saveLocalProjects } from "./project-class.js";
 import render from "./dom.js";
 import { sortProject } from "./project-class.js";
 class Task {
@@ -19,8 +19,8 @@ class Task {
   deleteTask() {
     // Remove the Object from the Arrays it is located
   }
-  addToArrays() {
-    homeArray.push(this);
+  addToHomeArray() {
+    allProjects[0].myArray.push(this);
     // If belongs to a project, push to project array too
   }
   toggleCheck() {
@@ -40,12 +40,12 @@ function addNewTask(e) {
   let priority = document.querySelector('input[name="priority"]:checked').value;
   let checklist = undefined;
   let newTask = new Task(title, description, dueDate, priority, checklist);
-  newTask.addToArrays();
-  saveLocal();
+  newTask.addToHomeArray();
   sortProject(newTask);
+  saveLocalProjects();
   // The next line of code was added because the contents of the homeArray kept duplicating during rendering. A temporary fix, find permanent fix later
   document.querySelector("#container").innerHTML = "";
-  homeArray.map(render);
+  allProjects[0].myArray.map(render);
   document.querySelector(".bg-modal").style.display = "none";
   document.querySelector("#new-task-form").reset();
 }
