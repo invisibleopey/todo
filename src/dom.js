@@ -1,4 +1,3 @@
-import { restoreLocal } from "./index.js";
 import { allProjects } from "./project-class.js";
 const container = document.querySelector("#container");
 function render(obj) {
@@ -51,23 +50,21 @@ export function renderProjects(obj) {
   const ul = document.querySelector("#project-list");
   let li = document.createElement("li");
   let span = document.createElement("span");
+  if (obj.title === "Home") return;
   span.textContent = obj.title;
-  span.classList.add("project");
   li.append(span);
   ul.append(li);
-  // span.addEventListener("click", obj.renderProjectTasks.bind(obj));
 }
 // Event listener for home button
 const homeBtn = document.querySelector("#home");
 homeBtn.addEventListener("click", () => {
-  restoreLocal();
+  document.querySelector("#container").innerHTML = "";
+  allProjects[0].myArray.map(render);
 });
 // Event Listener to render the array in each project.
 // Method of class Project was giving me problem so I moved it here.
-const projectList = document.querySelectorAll(".project");
-projectList.forEach((element) =>
-  element.addEventListener("click", addEventToProject)
-);
+const nav = document.querySelector("nav");
+nav.addEventListener("click", addEventToProject);
 function addEventToProject(e) {
   document.querySelector("#container").innerHTML = "";
   let theProject = e.target.outerText.toLowerCase();
