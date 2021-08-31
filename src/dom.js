@@ -63,9 +63,11 @@ homeBtn.addEventListener("click", () => {
 });
 // Event Listener to render the array in each project.
 // Method of class Project was giving me problem so I moved it here.
-const nav = document.querySelector("nav");
-nav.addEventListener("click", addEventToProject);
+const projectList = document.querySelector("#project-list");
+projectList.addEventListener("click", addEventToProject);
 function addEventToProject(e) {
+  // Next line is to fix bug of empty spaces calling the function
+  if (e.target.nodeName !== "SPAN") return;
   document.querySelector("#container").innerHTML = "";
   let theProject = e.target.outerText.toLowerCase();
   for (let project of allProjects) {
