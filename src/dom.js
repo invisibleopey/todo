@@ -1,4 +1,4 @@
-import { allProjects } from "./project-class.js";
+import { allProjects, saveLocalProjects } from "./project-class.js";
 const container = document.querySelector("#container");
 function render(obj) {
   // Create the Div and its contents
@@ -21,6 +21,7 @@ function render(obj) {
   let delBtn = document.createElement("button");
   delBtn.textContent = "X";
   delBtn.classList.add("task-btns");
+  delBtn.id = "deleteBtn";
   // Append all contents to the div and div to the container
   newTask.append(checkbox, title, detailsBtn, dueDate, editBtn, delBtn);
   container.append(newTask);
@@ -73,6 +74,23 @@ function addEventToProject(e) {
   for (let project of allProjects) {
     if (project.title.toLowerCase() === theProject) {
       project.myArray.map(render);
+    }
+  }
+}
+// Event Listener to delete a Task
+container.addEventListener("click", deleteTask);
+function deleteTask(e) {
+  if (e.target.id !== "deleteBtn") return;
+  let targetTitle = e.target.parentNode.children[1].outerText;
+  // Delete from the Home array and Project if task is also in a project
+  for (let i = 0; i < allProjects.length; i++) {
+    for (let j = 0; j < allProjects[i].myArray.length; j++) {
+      if (targetTitle === allProjects[i].myArray[j].title) {
+        allProjects[i].myArray.splice(j, 1);
+        saveLocalProjects();
+        container.innerHTML = "";
+        allProjects[i].myArray.map(render);
+      }
     }
   }
 }
