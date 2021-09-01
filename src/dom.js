@@ -5,9 +5,10 @@ function render(obj) {
   let newTask = document.createElement("div");
   newTask.classList.add("task");
   let checkbox = document.createElement("input");
+  if (obj.checklist === "done") checkbox.checked = true;
   checkbox.type = "checkbox";
   checkbox.name = "done";
-  checkbox.id = "toggleDone";
+  checkbox.id = "toggleDoneBox";
   let title = document.createElement("p");
   title.textContent = obj.title;
   let detailsBtn = document.createElement("button");
@@ -87,6 +88,28 @@ function deleteTask(e) {
     for (let j = 0; j < allProjects[i].myArray.length; j++) {
       if (targetTitle === allProjects[i].myArray[j].title) {
         allProjects[i].myArray.splice(j, 1);
+        saveLocalProjects();
+        container.innerHTML = "";
+        allProjects[i].myArray.map(render);
+      }
+    }
+  }
+}
+// TODO: Event Listener for editBtn and detailsBtn
+// Event Listener for the checkBox for marking done
+container.addEventListener("click", toggleDone);
+function toggleDone(e) {
+  if (e.target.id !== "toggleDoneBox") return;
+  let targetTitle = e.target.parentNode.children[1].outerText;
+  // Loop through all Home array and Project if task is also in a project
+  for (let i = 0; i < allProjects.length; i++) {
+    for (let j = 0; j < allProjects[i].myArray.length; j++) {
+      if (targetTitle === allProjects[i].myArray[j].title) {
+        if (allProjects[i].myArray[j].checklist === "done") {
+          allProjects[i].myArray[j].checklist = undefined;
+        } else {
+          allProjects[i].myArray[j].checklist = "done";
+        }
         saveLocalProjects();
         container.innerHTML = "";
         allProjects[i].myArray.map(render);
