@@ -9,8 +9,14 @@ function render(obj) {
   checkbox.type = "checkbox";
   checkbox.name = "done";
   checkbox.id = "toggleDoneBox";
-  let title = document.createElement("p");
-  title.textContent = obj.title;
+  let title;
+  if (obj.checklist === "done") {
+    title = document.createElement("del");
+    title.textContent = obj.title;
+  } else {
+    title = document.createElement("p");
+    title.textContent = obj.title;
+  }
   let detailsBtn = document.createElement("button");
   detailsBtn.textContent = "DETAILS";
   detailsBtn.classList.add("task-btns");
