@@ -4,6 +4,7 @@ function render(obj) {
   // Create the Div and its contents
   let newTask = document.createElement("div");
   newTask.classList.add("task");
+  if (obj.checklist === "done") newTask.classList.add("done");
   let checkbox = document.createElement("input");
   if (obj.checklist === "done") checkbox.checked = true;
   checkbox.type = "checkbox";
