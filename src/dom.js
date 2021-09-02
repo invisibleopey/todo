@@ -21,6 +21,7 @@ function render(obj) {
   let detailsBtn = document.createElement("button");
   detailsBtn.textContent = "DETAILS";
   detailsBtn.classList.add("task-btns");
+  detailsBtn.id = "detailsBtn";
   let dueDate = document.createElement("p");
   dueDate.textContent = obj.dueDate;
   let editBtn = document.createElement("button");
@@ -123,5 +124,95 @@ function toggleDone(e) {
       }
     }
   }
+}
+// Event Listener for detailsBtn
+container.addEventListener("click", getTaskDetails);
+function getTaskDetails(e) {
+  if (e.target.id !== "detailsBtn") return;
+  let targetTitle = e.target.parentNode.children[1].outerText;
+  for (let i = 0; i < allProjects[0].myArray.length; i++) {
+    if (targetTitle === allProjects[0].myArray[i].title) {
+      let targetTask = allProjects[0].myArray[i];
+      let title = targetTask.title;
+      let project = allProjects[0].title;
+      // Convoluted conditionals and loop to reset value of project if the task
+      // belongs to another project apart from home
+      for (let j = 0; j < allProjects.length; j++) {
+        for (let k = 0; k < allProjects[j].myArray.length; k++) {
+          if (
+            allProjects[j].title !== "Home" &&
+            allProjects[j].myArray[k].title === targetTitle
+          ) {
+            project = allProjects[j].title;
+          }
+        }
+      }
+      let priority = targetTask.priority;
+      let dueDate = targetTask.dueDate;
+      let details = targetTask.description;
+      renderDetailsPopUp(title, project, priority, dueDate, details);
+    }
+  }
+}
+function renderDetailsPopUp(title, project, priority, dueDate, details) {
+  let body = document.querySelector("body");
+  // Create div for modal bg and modal content
+  let bgModal = document.createElement("div");
+  bgModal.classList.add("bg-modal");
+  bgModal.style.display = "flex";
+  let modalContents = document.createElement("div");
+  modalContents.classList.add("details-pop-up");
+  // Start Creating the details within the task object
+  // Close
+  let close = document.createElement("div");
+  close.textContent = "+";
+  close.classList.add("close");
+  close.addEventListener("click", function () {
+    bgModal.style.display = "none";
+  });
+  // Title
+  let titleDiv = document.createElement("div");
+  let titleP = document.createElement("p");
+  titleP.textContent = title;
+  titleDiv.append(titleP);
+  // Project
+  let projectDiv = document.createElement("div");
+  let projectT = document.createElement("span");
+  projectT.textContent = "Project:";
+  let projectC = document.createElement("span");
+  projectC.textContent = project;
+  projectDiv.append(projectT, projectC);
+  // Priority
+  let priorityDiv = document.createElement("div");
+  let priorityT = document.createElement("span");
+  priorityT.textContent = "Priority:";
+  let priorityC = document.createElement("span");
+  priorityC.textContent = priority;
+  priorityDiv.append(priorityT, priorityC);
+  // Due Date
+  let dueDateDiv = document.createElement("div");
+  let dueDateT = document.createElement("span");
+  dueDateT.textContent = "Due Date:";
+  let dueDateC = document.createElement("span");
+  dueDateC.textContent = dueDate;
+  dueDateDiv.append(dueDateT, dueDateC);
+  // Details
+  let detailsDiv = document.createElement("div");
+  let detailsT = document.createElement("span");
+  detailsT.textContent = "Details:";
+  let detailsC = document.createElement("span");
+  detailsC.textContent = details;
+  detailsDiv.append(detailsT, detailsC);
+  // Append all to modalContents
+  modalContents.append(
+    close,
+    titleDiv,
+    projectDiv,
+    priorityDiv,
+    dueDateDiv,
+    detailsDiv
+  );
+  bgModal.append(modalContents);
+  body.append(bgModal);
 }
 export default render;
