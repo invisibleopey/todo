@@ -105,6 +105,7 @@ function deleteTask(e) {
 }
 // TODO: Event Listener for editBtn and detailsBtn
 // Event Listener for the checkBox for marking done
+// TODO: Found a bug here, fix it
 container.addEventListener("click", toggleDone);
 function toggleDone(e) {
   if (e.target.id !== "toggleDoneBox") return;
