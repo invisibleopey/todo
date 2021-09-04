@@ -187,3 +187,8 @@ main {
   margin-top: 1em;
   margin-right: 1em;
 }
+/* Additional styles for edit form pop-up */
+.edit-form-pop-up {
+  height: 20rem;
+  width: 35rem;
+}
