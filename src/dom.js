@@ -111,18 +111,16 @@ function toggleDone(e) {
   if (e.target.id !== "toggleDoneBox") return;
   let targetTitle = e.target.parentNode.children[1].outerText;
   // Loop through all Home array and Project if task is also in a project
-  for (let i = 0; i < allProjects.length; i++) {
-    for (let j = 0; j < allProjects[i].myArray.length; j++) {
-      if (targetTitle === allProjects[i].myArray[j].title) {
-        if (allProjects[i].myArray[j].checklist === "done") {
-          allProjects[i].myArray[j].checklist = undefined;
-        } else {
-          allProjects[i].myArray[j].checklist = "done";
-        }
-        saveLocalProjects();
-        container.innerHTML = "";
-        allProjects[i].myArray.map(render);
+  for (let i = 0; i < allProjects[0].myArray.length; i++) {
+    if (targetTitle === allProjects[0].myArray[i].title) {
+      if (allProjects[0].myArray[i].checklist === "done") {
+        allProjects[0].myArray[i].checklist = undefined;
+      } else {
+        allProjects[0].myArray[i].checklist = "done";
       }
+      saveLocalProjects();
+      container.innerHTML = "";
+      allProjects[0].myArray.map(render);
     }
   }
 }
