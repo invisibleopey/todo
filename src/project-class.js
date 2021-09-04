@@ -35,7 +35,11 @@ export function sortProject(newTask) {
   if (projectName === "") return;
   for (let i = 0; i < allProjects.length; i++) {
     if (allProjects[i].title === projectName) {
-      allProjects[i].myArray.push(newTask);
+      // Push the same object, so that by reference, any change to one is a change to all
+      for (let j = 0; j < allProjects[0].myArray.length; j++) {
+        if (newTask.title === allProjects[0].myArray[j].title)
+          allProjects[i].myArray.push(allProjects[0].myArray[j]);
+      }
     }
   }
 }
