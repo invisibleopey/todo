@@ -1,4 +1,5 @@
 import { allProjects, saveLocalProjects } from "./project-class.js";
+import { parseISO, isPast, isToday } from "date-fns";
 const container = document.querySelector("#container");
 function render(obj) {
   // Create the Div and its contents
@@ -391,5 +392,20 @@ function setEdittedTask(
   edittedTask.description = newDescription;
   edittedTask.dueDate = newDueDate;
   edittedTask.priority = newPriority;
+}
+
+// Event Listener for Today's task
+const todayTaskBtn = document.querySelector("#today");
+todayTaskBtn.addEventListener("click", renderTodaysTasks);
+function renderTodaysTasks() {
+  let todaysTask = [];
+  for (let i = 0; i < allProjects[0].myArray.length; i++) {
+    let parsedDueDate = parseISO(allProjects[0].myArray[i].dueDate);
+    if (isPast(parsedDueDate) || isToday(parsedDueDate)) {
+      todaysTask.push(allProjects[0].myArray[i]);
+    }
+  }
+  document.querySelector("#container").innerHTML = "";
+  todaysTask.map(render);
 }
 export default render;
