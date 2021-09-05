@@ -95,12 +95,28 @@ function deleteTask(e) {
   // Delete from the Home array and Project if task is also in a project
   for (let i = 0; i < allProjects.length; i++) {
     for (let j = 0; j < allProjects[i].myArray.length; j++) {
+      // Conditional statement to delete the target task
       if (targetTitle === allProjects[i].myArray[j].title) {
         allProjects[i].myArray.splice(j, 1);
         saveLocalProjects();
         container.innerHTML = "";
-        allProjects[i].myArray.map(render);
+        if (allProjects[i].myArray.length !== 0) {
+          allProjects[i].myArray.map(render);
+        } else {
+          allProjects[0].myArray.map(render);
+        }
       }
+      // Conditional statement to delete the project if it is not home
+      // and that is the last task to be deleted
+      if (
+        allProjects[i].title !== "Home" &&
+        allProjects[i].myArray.length === 0
+      ) {
+        allProjects.splice(i, 1);
+      }
+      saveLocalProjects();
+      document.querySelector("#project-list").innerHTML = "";
+      allProjects.map(renderProjects);
     }
   }
 }
@@ -245,7 +261,7 @@ function renderEditForm(title, priority, dueDate, details) {
   bgModal.classList.add("edit-bg-modal");
   let modalContents = document.createElement("div");
   modalContents.classList.add("modal-contents");
-  modalContents.classList.add("edit-form-pop-up"); // TODO: Change this to form class
+  modalContents.classList.add("edit-form-pop-up");
   // Start Creating the details within the Edit container
   // Close
   let close = document.createElement("div");
