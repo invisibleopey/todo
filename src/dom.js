@@ -1,5 +1,5 @@
 import { allProjects, saveLocalProjects } from "./project-class.js";
-import { parseISO, isPast, isToday } from "date-fns";
+import { parseISO, isPast, isToday, isThisWeek } from "date-fns";
 const container = document.querySelector("#container");
 function render(obj) {
   // Create the Div and its contents
@@ -398,14 +398,28 @@ function setEdittedTask(
 const todayTaskBtn = document.querySelector("#today");
 todayTaskBtn.addEventListener("click", renderTodaysTasks);
 function renderTodaysTasks() {
-  let todaysTask = [];
+  let todaysTasks = [];
   for (let i = 0; i < allProjects[0].myArray.length; i++) {
     let parsedDueDate = parseISO(allProjects[0].myArray[i].dueDate);
     if (isPast(parsedDueDate) || isToday(parsedDueDate)) {
-      todaysTask.push(allProjects[0].myArray[i]);
+      todaysTasks.push(allProjects[0].myArray[i]);
     }
   }
   document.querySelector("#container").innerHTML = "";
-  todaysTask.map(render);
+  todaysTasks.map(render);
+}
+// Event Listener for This Week's Tasks
+const thisWeekTaskBtn = document.querySelector("#this-week");
+thisWeekTaskBtn.addEventListener("click", renderThisWeeksTasks);
+function renderThisWeeksTasks() {
+  let thisWeekTasks = [];
+  for (let i = 0; i < allProjects[0].myArray.length; i++) {
+    let parsedDueDate = parseISO(allProjects[0].myArray[i].dueDate);
+    if (isThisWeek(parsedDueDate)) {
+      thisWeekTasks.push(allProjects[0].myArray[i]);
+    }
+  }
+  document.querySelector("#container").innerHTML = "";
+  thisWeekTasks.map(render);
 }
 export default render;
