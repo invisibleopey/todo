@@ -17,8 +17,8 @@ body {
 /* Header Styling */
 header {
   background: rgba(28, 163, 118, 0.8);
+  padding: 0 1em;
   display: flex;
-  align-items: center;
   justify-content: space-between;
 }
 h1 {
