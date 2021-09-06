@@ -202,3 +202,7 @@ main {
   height: 20rem;
   width: 35rem;
 }
+/* Stling of footer */
+footer {
+  text-align: center;
+}
