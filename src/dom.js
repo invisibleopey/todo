@@ -5,6 +5,17 @@ function render(obj) {
   // Create the Div and its contents
   let newTask = document.createElement("div");
   newTask.classList.add("task");
+  switch (obj.priority) {
+    case "low":
+      newTask.classList.add("low-priority-task");
+      break;
+    case "medium":
+      newTask.classList.add("medium-priority-task");
+      break;
+    case "high":
+      newTask.classList.add("high-priority-task");
+      break;
+  }
   if (obj.checklist === "done") newTask.classList.add("done");
   let checkbox = document.createElement("input");
   if (obj.checklist === "done") checkbox.checked = true;
