@@ -51,16 +51,19 @@ span {
 main {
   padding: 0 2em;
 }
-/* TODO: Remember to add border-left class for each priority levels */
 .task {
   display: flex;
   justify-content: space-between;
+  gap: 0.5em;
   align-items: center;
   margin-bottom: 0.5em;
   background: rgba(197, 193, 192, 0.7);
   height: 2.5em;
   border-radius: 0.2em;
   padding: 0 1em;
+}
+.task :nth-child(2) {
+  flex: 1 1 auto;
 }
 /* Additional styling for left border based on priority */
 .low-priority-task {
