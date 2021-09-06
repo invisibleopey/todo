@@ -3,7 +3,7 @@ import render from "./dom.js";
 import { allProjects } from "./project-class.js";
 
 let userName = localStorage.getItem("userName");
-if (!userName || userName === null) {
+if (!userName && userName === null) {
   userName = prompt("Welcome, please enter your name...");
   localStorage.setItem("userName", userName);
 }
