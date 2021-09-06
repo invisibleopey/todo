@@ -62,6 +62,16 @@ main {
   border-radius: 0.2em;
   padding: 0 1em;
 }
+/* Additional styling for left border based on priority */
+.low-priority-task {
+  border-left: 0.3em solid green;
+}
+.medium-priority-task {
+  border-left: 0.3em solid yellow;
+}
+.high-priority-task {
+  border-left: 0.3em solid red;
+}
 /* Additional styling for .task that are completed */
 .done {
   opacity: 0.65;
